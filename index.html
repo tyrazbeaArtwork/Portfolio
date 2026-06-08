@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aina | Minimalist Digital Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neutral: {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#e5e5e5',
+                            300: '#d4d4d4',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            800: '#262626',
+                            900: '#171717',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f6; /* Warm elegant alabaster white background */
+            color: #262626;
+            transition: background-color 0.3s ease;
+        }
+        /* Refined, thin minimalist scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(38, 38, 38, 0.15);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(38, 38, 38, 0.3);
+        }
+        /* Custom transitions for elegant list loading */
+        .portfolio-item {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-1px);
+        }
+        /* Hides default native scroll bars for visual tabs alignment */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-10 relative">
+
+    <!-- Main Minimalist Box Container -->
+    <div class="w-full max-w-4xl bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-neutral-100 relative z-10 overflow-hidden flex flex-col md:flex-row">
+        
+        <!-- Left Pane: Identity Header Column (Structural & Clean) -->
+        <div class="w-full md:w-[38%] p-8 md:p-10 flex flex-col items-center text-center justify-between border-b md:border-b-0 md:border-r border-neutral-100 bg-neutral-50/40">
+            
+            <div class="w-full flex justify-between items-center mb-8">
+                <span class="text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase">Portfolio Node</span>
+                <span class="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" title="Active Core"></span>
+            </div>
+
+            <!-- Profile Details -->
+            <div class="flex flex-col items-center w-full">
+                <!-- Clean Initial Avatar Design -->
+                <div class="relative mb-6">
+                    <div class="w-28 h-28 rounded-full border-2 border-neutral-200 flex items-center justify-center bg-white shadow-sm">
+                        <span class="font-serif text-5xl font-medium tracking-widest text-neutral-900">A</span>
+                    </div>
+                </div>
+
+                <h1 class="font-serif text-5xl font-semibold text-neutral-900 tracking-wide mb-2">Aina</h1>
+                <p class="text-sm font-bold text-neutral-600 tracking-[0.15em] uppercase mt-2">Digital Designer</p>
+                
+                <p class="text-sm text-neutral-700 font-medium mt-5 max-w-[260px] leading-relaxed">
+                    Crafting compelling visual narratives, modern user experiences, and minimalist digital designs out of Malaysia.
+                </p>
+
+                <!-- Clean Minimalist Badges -->
+                <div class="flex flex-wrap gap-2 justify-center mt-6">
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wide text-neutral-700 rounded-md border border-neutral-300 bg-white shadow-sm">Digital Design</span>
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wide text-neutral-700 rounded-md border border-neutral-300 bg-white shadow-sm">UX/UI</span>
+                    <span class="px-3 py-1 text-xs font-semibold tracking-wide text-neutral-700 rounded-md border border-neutral-300 bg-white shadow-sm">Creative</span>
+                </div>
+            </div>
+
+            <!-- Direct Actions Block -->
+            <div class="w-full mt-10 pt-8 border-t border-neutral-200 space-y-3">
+                <!-- Contact Card -->
+                <button onclick="downloadVCard()" class="w-full py-3 px-4 rounded-xl font-semibold text-sm bg-neutral-900 text-white hover:bg-neutral-800 shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-address-card text-sm"></i>
+                    <span>Save Contact Card</span>
+                </button>
+
+                <!-- Show QR -->
+                <button onclick="toggleQRCode()" class="w-full py-3 px-4 rounded-xl font-semibold text-sm border-2 border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-qrcode text-sm"></i>
+                    <span>QR Profile Link</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Right Pane: Filterable Navigation Stream & Feed -->
+        <div class="w-full md:w-[62%] p-8 md:p-10 flex flex-col justify-between">
+            
+            <div>
+                <!-- Fine Navigation Tabs (Warm Minimalist Aesthetic) -->
+                <div class="flex border-b border-neutral-200 pb-px mb-8 overflow-x-auto gap-4 no-scrollbar">
+                    <button onclick="switchTab('all')" id="tab-all" class="tab-btn pb-3 px-2 text-sm font-bold tracking-wider uppercase border-b-2 border-neutral-900 text-neutral-900 transition-all whitespace-nowrap">
+                        All Items
+                    </button>
+                    <button onclick="switchTab('design')" id="tab-design" class="tab-btn pb-3 px-2 text-sm font-semibold tracking-wider uppercase border-b-2 border-transparent text-neutral-500 hover:text-neutral-900 transition-all whitespace-nowrap">
+                        Creative / Design
+                    </button>
+                    <button onclick="switchTab('coding')" id="tab-coding" class="tab-btn pb-3 px-2 text-sm font-semibold tracking-wider uppercase border-b-2 border-transparent text-neutral-500 hover:text-neutral-900 transition-all whitespace-nowrap">
+                        Coding Core
+                    </button>
+                    <button onclick="switchTab('socials')" id="tab-socials" class="tab-btn pb-3 px-2 text-sm font-semibold tracking-wider uppercase border-b-2 border-transparent text-neutral-500 hover:text-neutral-900 transition-all whitespace-nowrap">
+                        Social Feed
+                    </button>
+                </div>
+
+                <!-- Unified Filterable Lists -->
+                <div id="portfolio-links" class="space-y-4 max-h-[420px] overflow-y-auto pr-2">
+                    
+                    <!-- Behance Case Studies -->
+                    <div class="portfolio-item" data-category="socials design">
+                        <a href="https://www.behance.net/tyrazbea" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-800 flex items-center justify-center text-lg group-hover:bg-white group-hover:text-[#1769ff] transition-colors">
+                                        <i class="fa-brands fa-behance"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">Behance Portfolio</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Design Case Studies & Concept Layouts</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- LinkedIn Node -->
+                    <div class="portfolio-item" data-category="socials">
+                        <a href="https://www.linkedin.com/in/tyrazaini/" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-800 flex items-center justify-center text-lg group-hover:bg-white group-hover:text-[#0a66c2] transition-colors">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">LinkedIn Profile</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Professional CV, Experience & Background</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Instagram Hub -->
+                    <div class="portfolio-item" data-category="socials">
+                        <a href="https://www.instagram.com/tyrazbea/" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-800 flex items-center justify-center text-lg group-hover:bg-white group-hover:text-[#e1306c] transition-colors">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">Instagram</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Visual Outlet & Creative Diary</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Latest Work Spotlight Folder -->
+                    <div class="portfolio-item" data-category="design">
+                        <a href="https://drive.google.com/drive/folders/139PShT1R-yWLpsx0aH0CFP-6HLFkvPvP?usp=sharing" target="_blank" class="block p-4 rounded-xl border-2 border-neutral-800 bg-white hover:bg-neutral-50 transition-all duration-200 shadow-md group relative overflow-hidden">
+                            <!-- Delicate indicator line -->
+                            <div class="absolute left-0 top-0 h-full w-1 bg-neutral-800"></div>
+                            <div class="flex items-center justify-between pl-2">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-300 bg-neutral-100 text-neutral-900 flex items-center justify-center text-lg">
+                                        <i class="fa-solid fa-folder-open"></i>
+                                    </div>
+                                    <div>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] tracking-widest font-bold bg-neutral-800 text-white mb-1 uppercase">Latest Drive</span>
+                                        <h3 class="font-bold text-sm text-neutral-900">Current Design Spotlight</h3>
+                                        <p class="text-xs text-neutral-600 mt-0.5 font-medium">Direct link to most recent creative releases</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-600 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Spa Portfolio -->
+                    <div class="portfolio-item" data-category="design">
+                        <a href="https://photos.app.goo.gl/qJJBeTWuagqiaaE66" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 flex items-center justify-center text-lg">
+                                        <i class="fa-solid fa-circle-nodes"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">Spa Identity Set</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Wellness themes, visuals, and dynamic layouts</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Design Western -->
+                    <div class="portfolio-item" data-category="design">
+                        <a href="https://photos.app.goo.gl/3Ejh88MxbK8EWSJG9" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 flex items-center justify-center text-lg">
+                                        <i class="fa-solid fa-compass"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">Design Western</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Themed creative graphic vectors & sets</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Islamic Itqan -->
+                    <div class="portfolio-item" data-category="design">
+                        <a href="https://photos.app.goo.gl/bN343fkKuLw8r2zh7" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 flex items-center justify-center text-lg">
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">Islamic Itqan</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Cultural and digital graphics series</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Portfolio 2018 - 2021 -->
+                    <div class="portfolio-item" data-category="design">
+                        <a href="https://bit.ly/48YqTvm" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 flex items-center justify-center text-lg">
+                                        <i class="fa-regular fa-images"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">Portfolio 2018 - 2021</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Key visual design catalog of legacy works</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Custom Blog Coding -->
+                    <div class="portfolio-item" data-category="coding">
+                        <a href="https://tyrazaini.blogspot.com/p/gallery-portfolio-aina.html" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 flex items-center justify-center text-lg">
+                                        <i class="fa-solid fa-terminal"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">Custom Blog</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Coded portfolio space & blog framework</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Project Final KVJ 2017 -->
+                    <div class="portfolio-item" data-category="coding">
+                        <a href="https://tyrazbea.github.io/projectfinal/contact.html" target="_blank" class="block p-4 rounded-xl border border-neutral-200 bg-white hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-200 shadow-sm hover:shadow group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 flex items-center justify-center text-lg">
+                                        <i class="fa-solid fa-code"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-sm text-neutral-900">KVJ Project 2017</h3>
+                                        <p class="text-xs text-neutral-600 mt-1 font-medium">Early responsive frontend HTML/CSS project</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs text-neutral-400 group-hover:text-neutral-900 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Minimal Floor Control and Link Copying -->
+            <div class="border-t border-neutral-200 pt-6 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                
+                <!-- Legacy Archives -->
+                <div class="flex items-center gap-2 text-xs">
+                    <span class="text-neutral-500 font-medium">Legacy archives?</span>
+                    <a href="https://photos.app.goo.gl/nraFyU3a9QknT46NA" target="_blank" class="font-bold text-neutral-800 hover:text-black hover:underline inline-flex items-center gap-1 transition-colors">
+                        View Legacy Vault <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Custom Card Link Clipboard trigger -->
+                <button onclick="copyProfileLink()" class="flex items-center gap-2 py-2 px-4 rounded-lg border border-neutral-300 bg-white text-xs text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 hover:border-neutral-400 shadow-sm transition-all font-bold select-none focus:outline-none">
+                    <i class="fa-regular fa-clone text-neutral-500"></i>
+                    <span>Copy Card Link</span>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Minimalist QR Scan Dialog Modal -->
+    <div id="qr-modal" class="fixed inset-0 bg-neutral-900/40 backdrop-blur-[2px] z-50 flex items-center justify-center p-4 hidden" onclick="toggleQRCode()">
+        <div class="bg-white p-6 rounded-2xl max-w-xs w-full border border-neutral-100 text-center relative shadow-xl" onclick="event.stopPropagation()">
+            
+            <button onclick="toggleQRCode()" class="absolute top-4 right-4 text-neutral-400 hover:text-neutral-800 transition-all">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            
+            <h3 class="font-serif text-2xl font-light text-neutral-900 mb-1">Scan Profile</h3>
+            <p class="text-[10px] text-neutral-400 mb-6 uppercase tracking-wider">Access Aina's design portfolio</p>
+            
+            <!-- Sharp Vector QR Representation (Pure SVG) -->
+            <div class="p-3 bg-white border border-neutral-100 rounded-xl inline-block mx-auto mb-4 shadow-sm">
+                <svg width="150" height="150" viewBox="0 0 29 29" class="text-neutral-800 fill-current">
+                    <path d="M0,0 h7 v7 h-7 z M2,2 v3 h3 v-3 z M3,3 h1 v1 h-1 z" />
+                    <path d="M22,0 h7 v7 h-7 z M24,2 v3 h3 v-3 z M25,3 h1 v1 h-1 z" />
+                    <path d="M0,22 h7 v7 h-7 z M2,24 v3 h3 v-3 z M25,25 h1 v1 h-1 z" />
+                    <path d="M9,0 h4 v1 h-4 z M15,0 h5 v2 h-5 z M10,2 h2 v3 h-2 z M14,3 h4 v2 h-4 z M19,4 h2 v1 h-2 z" />
+                    <path d="M0,9 h2 v2 h-2 z M3,10 h3 v3 h-3 z M1,13 h4 v2 h-4 z M6,16 h2 v3 h-2 z" />
+                    <path d="M10,9 h6 v2 h-6 z M17,10 h4 v2 h-4 z M11,13 h7 v1 h-7 z M20,13 h2 v3 h-2 z" />
+                    <path d="M9,22 h4 v2 h-4 z M15,22 h5 v1 h-5 z M11,25 h3 v3 h-3 z M16,26 h4 v2 h-4 z" />
+                    <path d="M22,9 h4 v2 h-4 z M27,10 h2 v3 h-2 z M23,13 h5 v2 h-5 z M26,16 h3 v3 h-3 z" />
+                </svg>
+            </div>
+
+            <div class="text-[10px] text-neutral-400 font-medium tracking-widest uppercase">
+                aina.digital
+            </div>
+        </div>
+    </div>
+
+    <!-- Micro Success Toast Prompt (Standard non-alert design) -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 bg-neutral-900 text-neutral-100 py-3 px-5 rounded-lg shadow-lg z-50 flex items-center gap-3 transition-all duration-300 select-none">
+        <i class="fa-solid fa-circle-check text-neutral-300 text-xs"></i>
+        <div class="flex flex-col text-left">
+            <span class="text-[9px] font-bold leading-none uppercase tracking-widest text-neutral-400">System Notification</span>
+            <span id="toast-message" class="text-xs opacity-90 mt-1">Details updated.</span>
+        </div>
+    </div>
+
+    <!-- Functional Interactions Logic -->
+        <script>
+        // Custom Category Filtering Logic
+        function switchTab(tabId) {
+            // Update selected indicator active states
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('border-neutral-900', 'text-neutral-900', 'font-bold');
+                tab.classList.add('border-transparent', 'text-neutral-500', 'font-semibold');
+            });
+
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            activeTab.classList.remove('border-transparent', 'text-neutral-500', 'font-semibold');
+            activeTab.classList.add('border-neutral-900', 'text-neutral-900', 'font-bold');
+
+            // Render matching categories with light transition sequences
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                const categories = item.getAttribute('data-category').split(' ');
+                if (tabId === 'all' || categories.includes(tabId)) {
+                    item.style.display = 'block';
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transition = 'opacity 0.2s ease-out';
+                    }, 20);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Copy link handler using fallback compatibility inputs
+        function copyProfileLink() {
+            const currentURL = window.location.href;
+            
+            const input = document.createElement('input');
+            input.value = currentURL;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+
+            showToast("Profile link successfully copied to your clipboard.");
+        }
+
+        // Display micro toast messages
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const msgEl = document.getElementById('toast-message');
+            msgEl.textContent = message;
+
+            // Animate transition show
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 2500);
+        }
+
+        // Generate dynamic vCard format directly in browser memory
+        function downloadVCard() {
+            const vcardContent = 
+                "BEGIN:VCARD\n" +
+                "VERSION:3.0\n" +
+                "FN:Aina\n" +
+                "TITLE:Digital Designer\n" +
+                "URL:https://www.behance.net/tyrazbea\n" +
+                "URL;type=WORK:https://www.linkedin.com/in/tyrazaini/\n" +
+                "NOTE:Minimal Digital Card Portfolio Hub.\n" +
+                "END:VCARD";
+
+            const blob = new Blob([vcardContent], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'Aina_Portfolio_Contact.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("Aina's contact details (.vcf) saved to your device.");
+        }
+
+        // Modal View Controls
+        function toggleQRCode() {
+            const modal = document.getElementById('qr-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
